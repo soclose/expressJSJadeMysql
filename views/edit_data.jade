@@ -1,0 +1,42 @@
+html
+ head
+  title #{title}
+ body
+  #container
+  - each row in data
+    form(method="post" action="/update")
+     table(border='0')
+      tr
+       td
+        label='Nama Mahasiswa '
+       td
+        input(type = 'hidden', name = 'nim', value  = row.nim)
+        input(type = 'text', name = 'nama', value  = row.nama_mahasiswa)
+      tr
+       td(valign = 'top')
+        label='Alamat '
+       td
+        textarea(name = 'alamat', style='height:100px; width:290px')=row.alamat
+      tr
+       td
+        label='Telp   '
+       td
+        input(type = 'text', name = 'telp', maxlength = '13', value = row.telp)
+      tr
+       td
+        label='Jenis Kelamin   '
+       td
+        if row.jenis_kelamin == 'Laki - Laki'
+         input(type = 'radio', name = 'jk', value = 'Laki - Laki', checked = 'checked')
+         |Laki - Laki
+         input(type = 'radio', name = 'jk', value = 'Perempuan')
+         |Perempuan
+        else
+         input(type = 'radio', name = 'jk', value = 'Laki - Laki')
+         |Laki - Laki
+         input(type = 'radio', name = 'jk', value = 'Perempuan', checked = 'checked')
+         |Perempuan
+      tr
+       td
+        input(type = 'submit', value = 'Simpan' style='width:60px')
+        input(type = 'button', value = 'Cancel' ,style='margin-left:15px;width:60px', onClick = 'javascript:history.back(-1)')      

@@ -1,0 +1,30 @@
+html
+   head
+      title #{title}
+   body
+    table(align='center', border = '1')
+     tr
+      td(colspan='6', align = 'center', style='font-size:18px; color : #000; font-weight:bold')=' --- LIST DATA MAHASISWA --- '
+        #container
+         tr
+          td=' No '
+          td=' Nama Mahasiswa '
+          td=' Alamat '
+          td=' Telp '
+          td=' Jenis Kelamin '
+          td=' Action ' 
+        - each row in data
+         tr
+          td=row.nim
+          td=row.nama_mahasiswa
+          td=row.alamat
+          td=row.telp
+          td=row.jenis_kelamin
+          td 
+           a(href="/edit/"+row.nim)!='edit'
+           label='   |   '
+           a(href="/delete/"+row.nim)!='delete'
+           
+      tr
+       td(colspan='6')
+         a(href="/input")!='Input Data Mahasiswa'
